@@ -10,7 +10,7 @@ OBJCOPY=$(CROSS)objcopy
 STRIP=$(CROSS)strip
 
 # Setup compilation and linker flags.
-CFLAGS=-mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -nostdlib  -lc -lgcc -I CMSIS
+CFLAGS=-mcpu=cortex-m4 -march=armv7e-m -mthumb -mfloat-abi=hard -nostdlib  -lc -lgcc -I CMSIS -O0 -g
 LDFLAGS=-T ./stm32f4_discovery.ld
 
 # Setup project files.
