@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# Author      : Kuba Sejdak <kuba.sejdak@gmail.com>
+# Description : Starts debugging session for STM32Discovery.
+
+arm-none-eabi-gdb --tui $1/bin/$1.elf -x stm32f4_discovery.gdbinit
