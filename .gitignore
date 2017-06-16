@@ -1,4 +1,10 @@
 # Binary directories
 bin/
 
+# macOS files
 .DS_Store
+
+# CLion project files
+.idea/
+CMakeLists.txt
+cmake-build-debug
