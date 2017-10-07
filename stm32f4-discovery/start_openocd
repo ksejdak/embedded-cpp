@@ -3,4 +3,4 @@
 # Author      : Kuba Sejdak <kuba.sejdak@gmail.com>
 # Description : Starts OpenOCD debugging session.
 
-openocd -f /usr/share/openocd/scripts/board/stm32f4discovery.cfg -c "init" -c "reset halt"
+openocd -f /usr/local/share/openocd/scripts/board/stm32f4discovery.cfg -c "init" -c "reset halt"
