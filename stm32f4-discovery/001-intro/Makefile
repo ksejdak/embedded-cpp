@@ -21,7 +21,8 @@ LDFLAGS = -T ../stm32f4_discovery.ld
 SOURCES_CMSIS   = ../lib/CMSIS/system_stm32f4xx.c \
                   ../lib/CMSIS/startup_stm32f40_41xxx.s
 SOURCES_DRIVERS = ../lib/drivers/stm32f4xx_gpio.c \
-		          ../lib/drivers/stm32f4xx_rcc.c
+		          ../lib/drivers/stm32f4xx_rcc.c \
+				  ../lib/drivers/stm32f4xx_usart.c
 SOURCES         = main.c
 
 $(BIN): $(SOURCES)
