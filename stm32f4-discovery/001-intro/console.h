@@ -26,20 +26,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include "console.h"
+#ifndef CONSOLE_H
+#define CONSOLE_H
 
-#include <stdio.h>
+void console_init();
 
-int main(int argc, char *argv[])
-{
-    console_init();
-
-    int counter = 0;
-    for (int i = 0; i <= 100; ++i) {
-        if (i % 7 == 0)
-            ++counter;
-    }
-
-    printf("There are %d numbers between 0 & 100, that can be divided by 7\n", counter);
-    return 0;
-}
+#endif

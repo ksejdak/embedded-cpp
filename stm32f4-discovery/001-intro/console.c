@@ -26,20 +26,41 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include "console.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
+#include "stm32f4xx_usart.h"
 
-#include <stdio.h>
-
-int main(int argc, char *argv[])
+static void gpio_init()
 {
-    console_init();
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+    GPIO_PinAFConfig(GPIOC, GPIO_PinSource10, GPIO_AF_UART4);
 
-    int counter = 0;
-    for (int i = 0; i <= 100; ++i) {
-        if (i % 7 == 0)
-            ++counter;
-    }
+    GPIO_InitTypeDef config;
+    config.GPIO_Pin = GPIO_Pin_10;
+    config.GPIO_Mode = GPIO_Mode_AF;
+    config.GPIO_OType = GPIO_OType_PP;
+    config.GPIO_PuPd = GPIO_PuPd_UP;
+    config.GPIO_Speed = GPIO_Speed_100MHz;
+    GPIO_Init(GPIOC, &config);
+}
 
-    printf("There are %d numbers between 0 & 100, that can be divided by 7\n", counter);
-    return 0;
+static void uart_init()
+{
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_UART4, ENABLE);
+
+    USART_InitTypeDef config;
+    config.USART_BaudRate = 115200;
+    config.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+    config.USART_Mode = USART_Mode_Tx;
+    config.USART_Parity = USART_Parity_No;
+    config.USART_StopBits = USART_StopBits_1;
+    config.USART_WordLength = USART_WordLength_8b;
+    USART_Init(UART4, &config);
+    USART_Cmd(UART4, ENABLE);
+}
+
+void console_init()
+{
+    gpio_init();
+    uart_init();
 }
