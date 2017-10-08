@@ -10,8 +10,7 @@ OBJCOPY = $(CROSS)objcopy
 
 # Setup compilation and linker flags.
 CFLAGS  = -march=armv7e-m -mcpu=cortex-m4
-CFLAGS += -mthumb -mfloat-abi=hard
-CFLAGS += -nostdlib
+CFLAGS += -mthumb
 CFLAGS += -O0 -g
 CFLAGS += -I ../lib/CMSIS -I ../lib/drivers
 CFLAGS += -DUSE_STDPERIPH_DRIVER
@@ -23,7 +22,7 @@ SOURCES_CMSIS   = ../lib/CMSIS/system_stm32f4xx.c \
 SOURCES_DRIVERS = ../lib/drivers/stm32f4xx_gpio.c \
 		          ../lib/drivers/stm32f4xx_rcc.c \
 				  ../lib/drivers/stm32f4xx_usart.c
-SOURCES         = main.c
+SOURCES         = main.c syscalls.c console.c
 
 $(BIN): $(SOURCES)
 	mkdir -p bin
