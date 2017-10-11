@@ -7,7 +7,6 @@ build/
 
 # CLion project files
 .idea/
-CMakeLists.txt
 cmake-build-debug
 
 # VS Code project files
