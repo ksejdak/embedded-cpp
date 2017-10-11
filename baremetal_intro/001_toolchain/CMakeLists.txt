@@ -4,7 +4,7 @@ set(PROJECT_NAME 001_desktop)
 project(${PROJECT_NAME} C)
 
 set(SOURCES
-	main.c
+    main.c
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
