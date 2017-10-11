@@ -1,5 +1,6 @@
 # Binary directories
 bin/
+build/
 
 # macOS files
 .DS_Store
