@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 
 # Set project.
-set(PROJECT_NAME 002_stm32f4)
+set(PROJECT_NAME 003_stm32f4)
 project(${PROJECT_NAME} C ASM)
 
 # Set toolchain.
@@ -24,19 +24,22 @@ if (APPLE)
     string(REPLACE "-Wl,-search_paths_first" "" CMAKE_C_LINK_FLAGS ${CMAKE_C_LINK_FLAGS})
 endif()
 
-# Set sources.
-add_subdirectory(lib)
-include_directories(lib/CMSIS)
-include_directories(lib/drivers)
-
+# Add sources.
 set(SOURCES
     main.c
     console.c
     syscalls.c
 )
 
+# Add drivers.
+set(STM32F4_PATH ${CMAKE_SOURCE_DIR}/../../lib/stm32f4)
+add_subdirectory(${STM32F4_PATH} ${CMAKE_BINARY_DIR}/stm32f4)
+include_directories(${STM32F4_PATH}/drivers)
+include_directories(${STM32F4_PATH}/CMSIS)
+
+# Define executable.
 add_executable(${PROJECT_NAME} ${SOURCES})
-target_link_libraries(${PROJECT_NAME} drivers)
+target_link_libraries(${PROJECT_NAME} stm32f4)
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND
     ${CROSS}objcopy -O binary ${PROJECT_NAME}.elf ${PROJECT_NAME}.img
