@@ -1,34 +1,32 @@
-# Setup binary name from current directory name.
-CURRENT_PATH = $(abspath $(lastword $(MAKEFILE_LIST)))
-BIN = $(notdir $(patsubst %/,%,$(dir $(CURRENT_PATH))))
+# Set project.
+BUILD_PATH = build
+STM32F4_PATH = ../../lib/stm32f4
+BIN = 002_stm32f4
 
-# Setup toolchain.
+# Set toolchain.
 CROSS = arm-none-eabi-
-
 CC = $(CROSS)gcc
 OBJCOPY = $(CROSS)objcopy
 
-# Setup compilation and linker flags.
+# Set compilation flags.
 CFLAGS  = -march=armv7e-m -mcpu=cortex-m4
 CFLAGS += -mthumb
-CFLAGS += -O0 -g
-CFLAGS += -I ../lib/CMSIS -I ../lib/drivers
+CFLAGS += -I $(STM32F4_PATH)/CMSIS -I $(STM32F4_PATH)/drivers
 CFLAGS += -DUSE_STDPERIPH_DRIVER
-LDFLAGS = -T ../stm32f4_discovery.ld
+LDFLAGS = -T stm32f4discovery.ld
 
-# Setup project files.
-SOURCES_CMSIS   = ../lib/CMSIS/system_stm32f4xx.c \
-                  ../lib/CMSIS/startup_stm32f40_41xxx.s
-SOURCES_DRIVERS = ../lib/drivers/stm32f4xx_gpio.c \
-		          ../lib/drivers/stm32f4xx_rcc.c \
-				  ../lib/drivers/stm32f4xx_usart.c
-SOURCES         = main.c syscalls.c console.c
+# Add sources.
+SOURCES_STM32F4 = $(STM32F4_PATH)/CMSIS/system_stm32f4xx.c \
+                  $(STM32F4_PATH)/CMSIS/startup_stm32f40_41xxx.s \
+                  $(STM32F4_PATH)/drivers/stm32f4xx_gpio.c \
+		          $(STM32F4_PATH)/drivers/stm32f4xx_rcc.c \
+				  $(STM32F4_PATH)/drivers/stm32f4xx_usart.c
+SOURCES = main.c syscalls.c console.c
 
 $(BIN): $(SOURCES)
-	mkdir -p bin
-	$(CC) $(CFLAGS) $(LDFLAGS) $(SOURCES) $(SOURCES_CMSIS) $(SOURCES_DRIVERS) -o bin/$(BIN).elf
-	$(OBJCOPY) -O binary bin/$(BIN).elf bin/$(BIN).img
+	mkdir -p $(BUILD_PATH)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(SOURCES) $(SOURCES_STM32F4) -o $(BUILD_PATH)/$(BIN).elf
+	$(OBJCOPY) -O binary $(BUILD_PATH)/$(BIN).elf $(BUILD_PATH)/$(BIN).img
 
 clean:
-	rm -f bin/$(BIN).elf bin/$(BIN).img
-	rmdir bin
+	rm -rf $(BUILD_PATH)
