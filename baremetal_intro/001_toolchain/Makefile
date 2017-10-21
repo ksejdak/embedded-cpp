@@ -1,6 +1,6 @@
 # Set project.
 BUILD_PATH = build
-BIN        = 001_toolchain
+BIN = 001_toolchain
 
 # Set toolchain.
 CC = gcc
@@ -13,5 +13,4 @@ $(BIN): $(SOURCES)
 	$(CC) $(SOURCES) -o $(BUILD_PATH)/$(BIN).elf
 
 clean:
-	rm -f $(BUILD_PATH)/$(BIN).elf
-	rmdir $(BUILD_PATH)
+	rm -rf $(BUILD_PATH)
