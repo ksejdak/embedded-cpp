@@ -11,6 +11,7 @@ OBJCOPY = $(CROSS)objcopy
 # Set compilation flags.
 CFLAGS  = -march=armv7e-m -mcpu=cortex-m4
 CFLAGS += -mthumb
+CFLAGS += -nostdlib
 CFLAGS += -I $(STM32F4_PATH)/CMSIS -I $(STM32F4_PATH)/drivers
 CFLAGS += -DUSE_STDPERIPH_DRIVER
 LDFLAGS = -T stm32f4discovery.ld
@@ -21,7 +22,7 @@ SOURCES_STM32F4 = $(STM32F4_PATH)/CMSIS/system_stm32f4xx.c \
                   $(STM32F4_PATH)/drivers/stm32f4xx_gpio.c \
 		          $(STM32F4_PATH)/drivers/stm32f4xx_rcc.c \
 				  $(STM32F4_PATH)/drivers/stm32f4xx_usart.c
-SOURCES = main.c syscalls.c console.c
+SOURCES = main.c console.c
 
 $(BIN): $(SOURCES)
 	mkdir -p $(BUILD_PATH)
