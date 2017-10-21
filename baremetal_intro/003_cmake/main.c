@@ -28,23 +28,11 @@
 
 #include "console.h"
 
-#include <stdio.h>
-
-#define RANGE_START		0
-#define RANGE_END		100
-#define DIVIDER			7
-
 int main(int argc, char *argv[])
 {
     console_init();
 
-    int counter = 0;
-    for (int i = RANGE_START; i <= RANGE_END; ++i) {
-        if (i % DIVIDER == 0)
-            ++counter;
-    }
-
-    printf("There are %d numbers divisible by %d in range %d - %d.\n", counter, DIVIDER, RANGE_START, RANGE_END);
+    console_puts("Hello world!");
     return 0;
 }
 

@@ -31,4 +31,6 @@
 
 void console_init();
 
+void console_puts(const char *s);
+
 #endif

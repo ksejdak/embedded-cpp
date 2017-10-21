@@ -14,6 +14,7 @@ set(CMAKE_RANLIB ${CROSS}ranlib)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=armv7e-m -mcpu=cortex-m4")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mthumb")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -nostdlib")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${CMAKE_SOURCE_DIR}/stm32f4discovery.ld")
@@ -28,7 +29,6 @@ endif()
 set(SOURCES
     main.c
     console.c
-    syscalls.c
 )
 
 # Add drivers.
