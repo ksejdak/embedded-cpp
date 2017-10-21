@@ -31,7 +31,7 @@
 int main(int argc, char *argv[])
 {
     console_init();
-    console_puts("Hello world!");
+    console_puts("Hello world!\n");
 
     while (1);
     return 0;
