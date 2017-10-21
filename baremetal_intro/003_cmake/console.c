@@ -67,8 +67,8 @@ void console_init()
 
 void console_puts(const char *s)
 {
-    while (*s++) {
+    while (*s) {
         while (USART_GetFlagStatus(UART4, USART_FLAG_TC) == RESET);
-        USART_SendData(UART4, *s);
+        USART_SendData(UART4, *s++);
     }
 }

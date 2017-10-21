@@ -45,6 +45,8 @@ int main(int argc, char *argv[])
     }
 
     printf("There are %d numbers divisible by %d in range %d - %d.\n", counter, DIVIDER, RANGE_START, RANGE_END);
+
+    while (1);
     return 0;
 }
 

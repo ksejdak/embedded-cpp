@@ -31,8 +31,9 @@
 int main(int argc, char *argv[])
 {
     console_init();
-
     console_puts("Hello world!");
+
+    while (1);
     return 0;
 }
 
