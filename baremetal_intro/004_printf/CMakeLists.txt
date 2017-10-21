@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 
 # Set project.
-set(PROJECT_NAME 003_stm32f4)
+set(PROJECT_NAME 004_printf)
 project(${PROJECT_NAME} C ASM)
 
 # Set toolchain.
@@ -15,7 +15,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=armv7e-m -mcpu=cortex-m4")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mthumb")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0 -g")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${CMAKE_SOURCE_DIR}/stm32f4discovery.ld")
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 

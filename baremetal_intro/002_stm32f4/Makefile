@@ -10,7 +10,7 @@ OBJCOPY = $(CROSS)objcopy
 
 # Set compilation flags.
 CFLAGS  = -march=armv7e-m -mcpu=cortex-m4
-CFLAGS += -mthumb
+CFLAGS += -mthumb -O0 -g
 CFLAGS += -nostdlib
 CFLAGS += -I $(STM32F4_PATH)/CMSIS -I $(STM32F4_PATH)/drivers
 CFLAGS += -DUSE_STDPERIPH_DRIVER
