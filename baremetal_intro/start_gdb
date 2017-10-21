@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Author      : Kuba Sejdak <kuba.sejdak@gmail.com>
+# Description : Starts debugging session with (C)GDB.
+#
+# $1 - executable to debug
+
+if [ -z $1 ]; then
+	echo "No executable provided. Abort."
+	exit 1
+fi
+
+cgdb -d arm-none-eabi-gdb -- $1 -x gdbinit
+#arm-none-eabi-gdb --tui $1 -x gdbinit

@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Author      : Kuba Sejdak <kuba.sejdak@gmail.com>
+# Description : Starts OpenOCD debugging session for STM32F4DISCOVERY.
+
+OPENOCD_SHARE_PATH=""
+if [ -d /usr/local/share/openocd ]; then
+    OPENOCD_SHARE_PATH="/usr/local/share/openocd"
+else
+    OPENOCD_SHARE_PATH="/usr/share/openocd"
+fi
+
+openocd -f $OPENOCD_SHARE_PATH/scripts/board/stm32f4discovery.cfg -c "init" -c "reset halt"
