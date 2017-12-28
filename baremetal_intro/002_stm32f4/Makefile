@@ -20,8 +20,8 @@ LDFLAGS = -T stm32f4discovery.ld
 SOURCES_STM32F4 = $(STM32F4_PATH)/CMSIS/system_stm32f4xx.c \
                   $(STM32F4_PATH)/CMSIS/startup_stm32f40_41xxx.s \
                   $(STM32F4_PATH)/drivers/stm32f4xx_gpio.c \
-		          $(STM32F4_PATH)/drivers/stm32f4xx_rcc.c \
-				  $(STM32F4_PATH)/drivers/stm32f4xx_usart.c
+                  $(STM32F4_PATH)/drivers/stm32f4xx_rcc.c \
+                  $(STM32F4_PATH)/drivers/stm32f4xx_usart.c
 SOURCES = main.c console.c
 
 $(BIN): $(SOURCES)
